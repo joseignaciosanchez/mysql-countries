@@ -4,7 +4,7 @@ select name, language, percentage
 from languages
 join countries on languages.country_Code = countries.code
 where Language = "Slovene"
-order by Percentage desc;
+order by percentage desc;
 
 /*2. ¿Qué consulta ejecutarías para mostrar el número total de ciudades para cada país? Su consulta debe devolver el nombre del país y el número total de ciudades. Tu consulta debe organizar el resultado por el número de ciudades en orden descendente.*/
 use world;
@@ -14,22 +14,20 @@ join countries on cities.country_Code = countries.code
 group by cities.country_Code
 order by cities desc;
 
-/*-------------PREGUNTAR-------------*/
 /*3. ¿Qué consulta harías para obtener todas las ciudades de México con una población de más de 500,000? Tu consulta debe organizar el resultado por población en orden descendente.*/
 use world;
-select cities.name as name, cities.population as population, countries.code as country_id
+select cities.name as name, cities.population as population, countries.id as country_id
 from cities
-join countries on cities.country_code = countries.code
-where cities.country_code = "MEX" && cities.population > 500000
+join countries on cities.country_id = countries.id
+where cities.country_id = 136 && cities.population > 500000
 order by population desc;
 
-/*-------------PREGUNTAR-------------*/
 /*4. ¿Qué consulta ejecutarías para obtener todos los idiomas en cada país con un porcentaje superior al 89%? Tu consulta debe organizar el resultado por porcentaje en orden descendente.*/
 use world;
 select countries.name as name, languages.language as language, 
 languages.percentage as percentage
 from languages
-join countries on languages.country_code = countries.code
+join countries on languages.country_id = countries.id
 where languages.percentage > 89
 order by percentage desc;
 
